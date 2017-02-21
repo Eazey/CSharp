@@ -1,2 +1,2 @@
-# C-
-Learning pragraming with C#.
+# README
+Learning pragraming with C Sharp.
