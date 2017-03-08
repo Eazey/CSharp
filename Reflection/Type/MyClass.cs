@@ -18,5 +18,6 @@ public class MyClass
     public void MyMethod1() { }
     public void MyMethod2() { }
 
+    //静态方法
     public static void MyStaticMethod(){ }
 }
