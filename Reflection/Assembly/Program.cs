@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -21,8 +22,20 @@ namespace CSharpTest
             foreach (var type in types)
             {
                 //打印类型+类名
-                Console.WriteLine(type + type.Name);
+                Console.WriteLine(type + " " + type.Name);
             }
+
+            //通过名称获取 
+            try
+            {
+                Assembly assem2 = Assembly.Load("CSharpTest");
+                Console.WriteLine(assem2.FullName);
+            }
+            catch (FileNotFoundException ffe)
+            {
+                Console.WriteLine("Not found assembly called " + ffe.FileName);
+            }
+
             Console.ReadKey();
         }
     }
