@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +14,7 @@ namespace CSharpTest
             MyClass mc = new MyClass("Eazey", 21);
             Type t = mc.GetType();
 
-            //只反射类中的公共成员 包括静态方法 反射的是类不是对象
+            //只反射类中的公共成员 包括静态方法不包括构造方法 反射的是类不是对象
 
             Console.WriteLine(t.Name);//类
             Console.WriteLine(t.Namespace);//命名空间
@@ -34,7 +33,7 @@ namespace CSharpTest
                 Console.Write(info.Name + " ");
             }
             Console.WriteLine();
-            //方法 包含属性的get set方法 成员方法 以及 继承方法
+            //方法 包含属性的get/set方法 成员方法 继承方法 静态方法 不包过构造方法
             MethodInfo[] methodInfos = t.GetMethods();
             foreach (var info in methodInfos)
             {
