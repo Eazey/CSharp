@@ -8,11 +8,42 @@ using System.Threading.Tasks;
 
 namespace CSharpTest
 {
-
     class Program
     {
+        static IEnumerable<int> TestStateChange()
+        {
+            Console.WriteLine("First");
+            Console.WriteLine("1 Before");
+            yield return 1;
+
+            Console.WriteLine("1 Later");
+            Console.WriteLine("2 Before");
+            yield return 2;
+
+            Console.WriteLine("2 Later");
+        }
+        
         static void Main()
         {
+            Console.WriteLine("Call TestStateChnage");
+            IEnumerable<int> iteratorable = TestStateChange();
+
+            Console.WriteLine("Call GetEnumerator");
+            IEnumerator<int> iterator = iteratorable.GetEnumerator();
+
+            Console.WriteLine("First Call MoveNext()");
+            bool hasNext1 = iterator.MoveNext();
+            Console.WriteLine( " " + iterator.Current);
+
+            Console.WriteLine("Second Call MoveNext()");
+            bool hasNext2 = iterator.MoveNext();
+            Console.WriteLine(hasNext2 + " " + iterator.Current);
+
+            Console.WriteLine("Third Call MoveNext()");
+            bool hasNext3 = iterator.MoveNext();
+            Console.WriteLine(hasNext3 + " " + iterator.Current);
+            
+            /////////////////////////////////////////////////////////
 
             MyClass1 mc1 = new MyClass1();
 
@@ -35,6 +66,8 @@ namespace CSharpTest
                 Console.Write(element + " ");
             }
             Console.WriteLine();
+            
+            //////////////////////////////////////////////////////////
 
             Zoo myZoo = new Zoo();
 
